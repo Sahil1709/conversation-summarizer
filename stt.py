@@ -25,5 +25,4 @@ if wav_audio_data is not None:
 
     # Display the transcription
     response = response.json()
-    print(response)
     st.write(response['transcription'])  

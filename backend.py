@@ -20,13 +20,15 @@ async def transcribe_audio(file: UploadFile = File(...)):
     with open(temp_file_path, "rb") as audio_file:
         transcription = client.audio.transcriptions.create(
             file=(temp_file_path, audio_file.read()),
-            model="distil-whisper-large-v3-en",
+            model="whisper-large-v3",
             response_format="verbose_json",
         )
 
     # Return the transcription
-    print(transcription)
     return {
         "transcription": transcription.text,
-        "groq_response": transcription.segments,
+        "segments": transcription.segments,
+        "language": transcription.language,
+        "duration": transcription.duration,
+        "task": transcription.task
     }
