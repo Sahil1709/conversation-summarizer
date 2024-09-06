@@ -5,7 +5,13 @@ import tempfile
 import requests
 from st_audiorec import st_audiorec
 
-st.title('Speech to Text')
+st.title('Listen to Conversations') 
+
+with st.sidebar:
+    st.header("Conversation Listener")
+    st.write("Start recording button will start listening to the conversations.")
+    st.write("Once you are done, click on the stop button.")
+    st.write("The audio will be securely processed and saved for later inferencing.")
 
 wav_audio_data = st_audiorec()
 
