@@ -3,6 +3,36 @@ from streamlit_chatbox import *
 import time
 import simplejson as json
 
+TEST_RESPONSE = {
+  "query": "Who have I spoken to about vector databases?",
+  "results": [
+    {
+      "conversation_id": "conv123",
+      "timestamp": "2024-09-05T14:30:00Z",
+      "location": "TechConf 2024, San Francisco",
+      "participants": ["x", "y"],
+      "summary": "Discussion about vector databases, their advantages, challenges, and recommended systems.",
+      "relevance_score": 0.95,
+      "topics": ["vector databases", "similarity search", "semantic search", "recommendation systems", "image recognition", "scaling challenges", "embedding models"],
+      "entities": {
+        "people": ["x", "y"],
+        "technologies": ["vector databases", "Pinecone", "Weaviate"],
+        "concepts": ["similarity search", "semantic search", "recommendation systems", "image recognition", "high-dimensional data", "embedding models"]
+      },
+      "highlights": [
+        "I heard you've been working with vector databases lately",
+        "We've been exploring their potential for improving our search capabilities",
+        "main advantage is their ability to perform similarity searches efficiently",
+        "scaling can be tricky, especially when dealing with high-dimensional data",
+        "We've had good experiences with Pinecone and Weaviate"
+      ]
+    }
+  ],
+  "metadata": {
+    "total_results": 1,
+    "processing_time":0.05
+    }
+}
 
 llm = FakeLLM()
 chat_box = ChatBox()
@@ -57,52 +87,18 @@ feedback_kwargs = {
 
 if query := st.chat_input('input your question here'):
     chat_box.user_say(query)
-    # if streaming:
-    #     generator = llm.chat_stream(query)
-    #     elements = chat_box.ai_say(
-    #         [
-    #             # you can use string for Markdown output if no other parameters provided
-    #             Markdown("thinking", in_expander=in_expander,
-    #                      expanded=True, title="answer"),
-    #             Markdown("", in_expander=in_expander, title="references"),
-    #         ]
-    #     )
-    #     time.sleep(1)
-    #     text = ""
-    #     for x, docs in generator:
-    #         text += x
-    #         chat_box.update_msg(text, element_index=0, streaming=True)
-    #     # update the element without focus
-    #     chat_box.update_msg(text, element_index=0, streaming=False, state="complete")
-    #     chat_box.update_msg("\n\n".join(docs), element_index=1, streaming=False, state="complete")
-    #     chat_history_id = "some id"
-    #     chat_box.show_feedback(**feedback_kwargs,
-    #                             key=chat_history_id,
-    #                             on_submit=on_feedback,
-    #                             kwargs={"chat_history_id": chat_history_id, "history_index": len(chat_box.history) - 1})
-        
-    # text: response from llm
-    # docs: list of references
     chat_box.ai_say(
         [
-            # you can use string for Markdown output if no other parameters provided
             Markdown("thinking", in_expander=in_expander,
                         expanded=True, title="answer"),
             Markdown("", in_expander=in_expander, title="references"),
         ]
     )
-    text, docs = llm.chat(query)
+    # text, docs = llm.chat(query)
+    text = TEST_RESPONSE["results"][0]["summary"]
     time.sleep(1) # simulate thinking
     chat_box.update_msg(text, element_index=0, streaming=False, state="complete")
-    chat_box.update_msg("\n\n".join(docs), element_index=1, streaming=False, state="complete")
-    # chat_box.ai_say(
-    #     [
-    #         Markdown(text, in_expander=in_expander,
-    #                  expanded=True, title="answer"),
-    #         Markdown("\n\n".join(docs), in_expander=in_expander,
-    #                  title="references"),
-    #     ]
-    # )
+    # chat_box.update_msg("\n\n".join(docs), element_index=1, streaming=False, state="complete")
 
 btns.download_button(
     "Export Markdown",
@@ -122,6 +118,3 @@ if btns.button("clear history"):
     chat_box.init_session(clear=True)
     st.rerun()
 
-
-# if show_history:
-#     st.write(st.session_state)
