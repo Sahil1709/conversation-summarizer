@@ -2,6 +2,10 @@ import streamlit as st
 from streamlit_chatbox import *
 import time
 import simplejson as json
+from groq import Groq
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 TEST_RESPONSE = {
   "query": "Who have I spoken to about vector databases?",
@@ -34,6 +38,39 @@ TEST_RESPONSE = {
     }
 }
 
+def get_answer(context, metadata):
+
+    client = Groq(
+        api_key=os.getenv("GROQ_API_KEY"),
+    )
+    completion = client.chat.completions.create(
+        model="llama-3.1-70b-versatile",
+        messages=[
+            {
+                "role": "system",
+                "content": "Answer in detail"
+            },
+            {
+                "role": "user",
+                "content": f"""Below is the context of two people speaking:\n{context}
+                    Here is the metadata when user gave the following query:\n{metadata}
+                    \nBased on the metadata and context, provide the answer that answers the user's query 
+                    """
+            }
+        ],
+        temperature=0,
+        max_tokens=1024,
+        top_p=1,
+        stream=False,
+        stop=None,
+    )
+
+    result = completion.choices[0].message.content
+    print(result)
+    return result
+
+
+
 llm = FakeLLM()
 chat_box = ChatBox()
 chat_box.use_chat_name("chat1") # add a chat conversatoin
@@ -65,6 +102,9 @@ with st.sidebar:
         data = json.load(file)
         chat_box.from_dict(data)
 
+    if st.button("test"):
+        get_answer(os.getenv("TEST_TRANSCRIPTION"), TEST_RESPONSE)
+
 
 chat_box.init_session()
 chat_box.output_messages()
@@ -95,8 +135,7 @@ if query := st.chat_input('input your question here'):
         ]
     )
     # text, docs = llm.chat(query)
-    text = TEST_RESPONSE["results"][0]["summary"]
-    time.sleep(1) # simulate thinking
+    text = get_answer(os.getenv("TEST_TRANSCRIPTION"), TEST_RESPONSE) # take user query here
     chat_box.update_msg(text, element_index=0, streaming=False, state="complete")
     # chat_box.update_msg("\n\n".join(docs), element_index=1, streaming=False, state="complete")
 
