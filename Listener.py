@@ -34,3 +34,7 @@ if wav_audio_data is not None:
     # response = response.json()
     print(response)
     #st.write(response['transcription'])  
+    if response.status_code == 200:
+        st.success("Recording processed successfully.")
+    else:
+        st.error(response.text)
