@@ -25,6 +25,8 @@ async def transcribe_audio(file: UploadFile = File(...)):
             response_format="verbose_json",
         )
 
+    
+
     os.remove(temp_file_path)
 
     # Return the transcription

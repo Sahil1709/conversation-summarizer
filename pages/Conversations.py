@@ -7,38 +7,291 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-TEST_RESPONSE = {
-  "query": "Who have I spoken to about vector databases?",
-  "results": [
-    {
-      "conversation_id": "conv123",
-      "timestamp": "2024-09-05T14:30:00Z",
-      "location": "TechConf 2024, San Francisco",
-      "participants": ["x", "y"],
-      "summary": "Discussion about vector databases, their advantages, challenges, and recommended systems.",
-      "relevance_score": 0.95,
-      "topics": ["vector databases", "similarity search", "semantic search", "recommendation systems", "image recognition", "scaling challenges", "embedding models"],
-      "entities": {
-        "people": ["x", "y"],
-        "technologies": ["vector databases", "Pinecone", "Weaviate"],
-        "concepts": ["similarity search", "semantic search", "recommendation systems", "image recognition", "high-dimensional data", "embedding models"]
-      },
-      "highlights": [
-        "I heard you've been working with vector databases lately",
-        "We've been exploring their potential for improving our search capabilities",
-        "main advantage is their ability to perform similarity searches efficiently",
-        "scaling can be tricky, especially when dealing with high-dimensional data",
-        "We've had good experiences with Pinecone and Weaviate"
+TEST_RESPONSE = [
+  {
+    "distance": 0.3404202461242676,
+    "duration": 62.24,
+    "entities": {
+      "GPE": [
+        ""
+      ],
+      "ORG": [
+        "Pinecone"
+      ],
+      "PERSON": [
+        "Baviate",
+        "Sahil",
+        "Puranjay"
+      ],
+      "PRODUCT": [
+        ""
+      ],
+      "TECH": [
+        "Any Particular Vector Database Systems",
+        "Vector Databases",
+        "Recommendation Systems",
+        "Traditional Relational Databases"
       ]
-    }
-  ],
-  "metadata": {
-    "total_results": 1,
-    "processing_time":0.05
-    }
-}
+    },
+    "id": "67b049dd-de1a-449b-974e-a9354a98d5a2",
+    "keywords": {
+      "databases": 0.4685212856658182,
+      "good": 0.31234752377721214,
+      "great": 0.31234752377721214,
+      "puranjay": 0.15617376188860607,
+      "recognition": 0.15617376188860607,
+      "recommend": 0.15617376188860607,
+      "search": 0.31234752377721214,
+      "systems": 0.31234752377721214,
+      "vector": 0.4685212856658182,
+      "yes": 0.31234752377721214
+    },
+    "language": "English",
+    "score": 0.6595797538757324,
+    "topics": [
+      {
+        "id": 0,
+        "terms": []
+      },
+      {
+        "id": 1,
+        "terms": []
+      },
+      {
+        "id": 2,
+        "terms": []
+      }
+    ],
+    "transcript": " Hey Puranjay, great to see you at the conference. I heard you've been working with vector databases lately. Hi Sahil. Yes, that's right. We've been exploring the potential for improving our search capabilities. That's fascinating. What advantages have you found in using vector databases over traditional relational databases? Well, the main advantage is their ability to perform similarity searches efficiently. They're great for tasks like semantic search, recommendation systems, and image recognition. Interesting. Have you faced any challenges in implementing them? Yes. Scaling them can be tricky, especially when dealing with high-dimensional data. Also, there's a learning curve in terms of designing effective embedding models. I can imagine. Are there any particular vector database systems you'd recommend? We've had good experiences with Pinecone and Baviate. They both offer good performances and have solid documentation."
+  },
+  {
+    "distance": 0.3404202461242676,
+    "duration": 62.24,
+    "entities": {
+      "GPE": [
+        ""
+      ],
+      "ORG": [
+        "Pinecone"
+      ],
+      "PERSON": [
+        "Puranjay",
+        "Sahil",
+        "Baviate"
+      ],
+      "PRODUCT": [
+        ""
+      ],
+      "TECH": [
+        "Any Particular Vector Database Systems",
+        "Recommendation Systems",
+        "Vector Databases",
+        "Traditional Relational Databases"
+      ]
+    },
+    "id": "0ddfdfdc-180c-48af-b5f9-650a36f42f89",
+    "keywords": {
+      "databases": 0.4685212856658182,
+      "good": 0.31234752377721214,
+      "great": 0.31234752377721214,
+      "puranjay": 0.15617376188860607,
+      "recognition": 0.15617376188860607,
+      "recommend": 0.15617376188860607,
+      "search": 0.31234752377721214,
+      "systems": 0.31234752377721214,
+      "vector": 0.4685212856658182,
+      "yes": 0.31234752377721214
+    },
+    "language": "English",
+    "score": 0.6595797538757324,
+    "topics": [
+      {
+        "id": 0,
+        "terms": []
+      },
+      {
+        "id": 1,
+        "terms": []
+      },
+      {
+        "id": 2,
+        "terms": []
+      }
+    ],
+    "transcript": " Hey Puranjay, great to see you at the conference. I heard you've been working with vector databases lately. Hi Sahil. Yes, that's right. We've been exploring the potential for improving our search capabilities. That's fascinating. What advantages have you found in using vector databases over traditional relational databases? Well, the main advantage is their ability to perform similarity searches efficiently. They're great for tasks like semantic search, recommendation systems, and image recognition. Interesting. Have you faced any challenges in implementing them? Yes. Scaling them can be tricky, especially when dealing with high-dimensional data. Also, there's a learning curve in terms of designing effective embedding models. I can imagine. Are there any particular vector database systems you'd recommend? We've had good experiences with Pinecone and Baviate. They both offer good performances and have solid documentation."
+  },
+  {
+    "distance": 0.3404202461242676,
+    "duration": 62.24,
+    "entities": {
+      "GPE": [
+        ""
+      ],
+      "ORG": [
+        "Pinecone"
+      ],
+      "PERSON": [
+        "Puranjay",
+        "Sahil",
+        "Baviate"
+      ],
+      "PRODUCT": [
+        ""
+      ],
+      "TECH": [
+        "Any Particular Vector Database Systems",
+        "Recommendation Systems",
+        "Vector Databases",
+        "Traditional Relational Databases"
+      ]
+    },
+    "id": "35f8757e-8582-4b61-a5f1-a2fcd8daf4ed",
+    "keywords": {
+      "databases": 0.4685212856658182,
+      "good": 0.31234752377721214,
+      "great": 0.31234752377721214,
+      "puranjay": 0.15617376188860607,
+      "recognition": 0.15617376188860607,
+      "recommend": 0.15617376188860607,
+      "search": 0.31234752377721214,
+      "systems": 0.31234752377721214,
+      "vector": 0.4685212856658182,
+      "yes": 0.31234752377721214
+    },
+    "language": "English",
+    "score": 0.6595797538757324,
+    "topics": [
+      {
+        "id": 0,
+        "terms": []
+      },
+      {
+        "id": 1,
+        "terms": []
+      },
+      {
+        "id": 2,
+        "terms": []
+      }
+    ],
+    "transcript": " Hey Puranjay, great to see you at the conference. I heard you've been working with vector databases lately. Hi Sahil. Yes, that's right. We've been exploring the potential for improving our search capabilities. That's fascinating. What advantages have you found in using vector databases over traditional relational databases? Well, the main advantage is their ability to perform similarity searches efficiently. They're great for tasks like semantic search, recommendation systems, and image recognition. Interesting. Have you faced any challenges in implementing them? Yes. Scaling them can be tricky, especially when dealing with high-dimensional data. Also, there's a learning curve in terms of designing effective embedding models. I can imagine. Are there any particular vector database systems you'd recommend? We've had good experiences with Pinecone and Baviate. They both offer good performances and have solid documentation."
+  },
+  {
+    "distance": 0.3404202461242676,
+    "duration": 62.24,
+    "entities": {
+      "GPE": [
+        ""
+      ],
+      "ORG": [
+        "Pinecone"
+      ],
+      "PERSON": [
+        "Baviate",
+        "Sahil",
+        "Puranjay"
+      ],
+      "PRODUCT": [
+        ""
+      ],
+      "TECH": [
+        "Vector Databases",
+        "Traditional Relational Databases",
+        "Recommendation Systems",
+        "Any Particular Vector Database Systems"
+      ]
+    },
+    "id": "1d97653e-48cd-4b39-9d91-2eee8ef7573e",
+    "keywords": {
+      "databases": 0.4685212856658182,
+      "good": 0.31234752377721214,
+      "great": 0.31234752377721214,
+      "puranjay": 0.15617376188860607,
+      "recognition": 0.15617376188860607,
+      "recommend": 0.15617376188860607,
+      "search": 0.31234752377721214,
+      "systems": 0.31234752377721214,
+      "vector": 0.4685212856658182,
+      "yes": 0.31234752377721214
+    },
+    "language": "English",
+    "score": 0.6595797538757324,
+    "topics": [
+      {
+        "id": 0,
+        "terms": []
+      },
+      {
+        "id": 1,
+        "terms": []
+      },
+      {
+        "id": 2,
+        "terms": []
+      }
+    ],
+    "transcript": " Hey Puranjay, great to see you at the conference. I heard you've been working with vector databases lately. Hi Sahil. Yes, that's right. We've been exploring the potential for improving our search capabilities. That's fascinating. What advantages have you found in using vector databases over traditional relational databases? Well, the main advantage is their ability to perform similarity searches efficiently. They're great for tasks like semantic search, recommendation systems, and image recognition. Interesting. Have you faced any challenges in implementing them? Yes. Scaling them can be tricky, especially when dealing with high-dimensional data. Also, there's a learning curve in terms of designing effective embedding models. I can imagine. Are there any particular vector database systems you'd recommend? We've had good experiences with Pinecone and Baviate. They both offer good performances and have solid documentation."
+  },
+  {
+    "distance": 0.3404202461242676,
+    "duration": 62.24,
+    "entities": {
+      "GPE": [
+        ""
+      ],
+      "ORG": [
+        "Pinecone"
+      ],
+      "PERSON": [
+        "Puranjay",
+        "Baviate",
+        "Sahil"
+      ],
+      "PRODUCT": [
+        ""
+      ],
+      "TECH": [
+        "Vector Databases",
+        "Any Particular Vector Database Systems",
+        "Traditional Relational Databases",
+        "Recommendation Systems"
+      ]
+    },
+    "id": "78ffe568-65d0-4dd5-82eb-dbbe5c627034",
+    "keywords": {
+      "databases": 0.4685212856658182,
+      "good": 0.31234752377721214,
+      "great": 0.31234752377721214,
+      "puranjay": 0.15617376188860607,
+      "recognition": 0.15617376188860607,
+      "recommend": 0.15617376188860607,
+      "search": 0.31234752377721214,
+      "systems": 0.31234752377721214,
+      "vector": 0.4685212856658182,
+      "yes": 0.31234752377721214
+    },
+    "language": "English",
+    "score": 0.6595797538757324,
+    "topics": [
+      {
+        "id": 0,
+        "terms": []
+      },
+      {
+        "id": 1,
+        "terms": []
+      },
+      {
+        "id": 2,
+        "terms": []
+      }
+    ],
+    "transcript": " Hey Puranjay, great to see you at the conference. I heard you've been working with vector databases lately. Hi Sahil. Yes, that's right. We've been exploring the potential for improving our search capabilities. That's fascinating. What advantages have you found in using vector databases over traditional relational databases? Well, the main advantage is their ability to perform similarity searches efficiently. They're great for tasks like semantic search, recommendation systems, and image recognition. Interesting. Have you faced any challenges in implementing them? Yes. Scaling them can be tricky, especially when dealing with high-dimensional data. Also, there's a learning curve in terms of designing effective embedding models. I can imagine. Are there any particular vector database systems you'd recommend? We've had good experiences with Pinecone and Baviate. They both offer good performances and have solid documentation."
+  }
+]
 
-def get_answer(context, metadata):
+
+def get_answer(context, query):
 
     client = Groq(
         api_key=os.getenv("GROQ_API_KEY"),
@@ -52,9 +305,9 @@ def get_answer(context, metadata):
             },
             {
                 "role": "user",
-                "content": f"""Below is the context of two people speaking:\n{context}
-                    Here is the metadata when user gave the following query:\n{metadata}
-                    \nBased on the metadata and context, provide the answer that answers the user's query 
+                "content": f"""Following are the top 5 results from my vector db:\n{context}
+                    Based on the above results, answer the user's query:\n{query}
+                    \nFrom entities Include details like ORG, PERSONS, PRODUCT and TECH. Give your answer in form of a paragraph.
                     """
             }
         ],
@@ -103,7 +356,7 @@ with st.sidebar:
         chat_box.from_dict(data)
 
     if st.button("test"):
-        get_answer(os.getenv("TEST_TRANSCRIPTION"), TEST_RESPONSE)
+        get_answer(TEST_RESPONSE, "What did I talked about vector databased to puranjay?")
 
 
 chat_box.init_session()
@@ -135,7 +388,9 @@ if query := st.chat_input('input your question here'):
         ]
     )
     # text, docs = llm.chat(query)
-    text = get_answer(os.getenv("TEST_TRANSCRIPTION"), TEST_RESPONSE) # take user query here
+    params = {'query': query, 'limit': 5}
+    api_response = requests.get(f"http://localhost:5000/search", params=params)
+    text = get_answer(TEST_RESPONSE, query) 
     chat_box.update_msg(text, element_index=0, streaming=False, state="complete")
     # chat_box.update_msg("\n\n".join(docs), element_index=1, streaming=False, state="complete")
 
