@@ -1,3 +1,4 @@
+import requests
 import streamlit as st
 from streamlit_chatbox import *
 import time
@@ -292,12 +293,13 @@ TEST_RESPONSE = [
 
 
 def get_answer(context, query):
-
+    print(context)
+    print(query)
     client = Groq(
         api_key=os.getenv("GROQ_API_KEY"),
     )
     completion = client.chat.completions.create(
-        model="llama-3.1-70b-versatile",
+        model="llama3-8b-8192",
         messages=[
             {
                 "role": "system",
@@ -305,7 +307,7 @@ def get_answer(context, query):
             },
             {
                 "role": "user",
-                "content": f"""Following are the top 5 results from my vector db:\n{context}
+                "content": f"""Following is the top result from my vector db:\n{context}
                     Based on the above results, answer the user's query:\n{query}
                     \nFrom entities Include details like ORG, PERSONS, PRODUCT and TECH. Give your answer in form of a paragraph.
                     """
@@ -356,7 +358,10 @@ with st.sidebar:
         chat_box.from_dict(data)
 
     if st.button("test"):
-        get_answer(TEST_RESPONSE, "What did I talked about vector databased to puranjay?")
+        params = {'query': 'yosemite', 'limit': 5}
+        response = requests.post("http://127.0.0.1:5000/search", json=params)  # Send as JSON body
+        print(response.text)
+        # get_answer(TEST_RESPONSE, "What did I talked about vector databased to puranjay?")
 
 
 chat_box.init_session()
@@ -388,9 +393,10 @@ if query := st.chat_input('input your question here'):
         ]
     )
     # text, docs = llm.chat(query)
-    params = {'query': query, 'limit': 5}
-    api_response = requests.get(f"http://localhost:5000/search", params=params)
-    text = get_answer(TEST_RESPONSE, query) 
+    params = {'query': query, 'limit': 1}
+    api_response = requests.post(f"http://127.0.0.1:5000/search", json=params)
+    #print(api_response.text)
+    text = get_answer(api_response.text, query) 
     chat_box.update_msg(text, element_index=0, streaming=False, state="complete")
     # chat_box.update_msg("\n\n".join(docs), element_index=1, streaming=False, state="complete")
 

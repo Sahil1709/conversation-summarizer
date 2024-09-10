@@ -27,9 +27,10 @@ if wav_audio_data is not None:
     # Send file to the backend API
     with open(temp_file_path, 'rb') as f:
         files = {'file': f}
-        response = requests.post("http://127.0.0.1:8000/transcribe/", files=files)
+        # response = requests.post("http://127.0.0.1:8000/transcribe/", files=files)
+        response = requests.post("http://127.0.0.1:5000/process", files=files)
 
     # Display the transcription
-    response = response.json()
+    # response = response.json()
     print(response)
-    st.write(response['transcription'])  
+    #st.write(response['transcription'])  
